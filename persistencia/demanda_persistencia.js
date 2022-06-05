@@ -17,23 +17,16 @@ function inserir(demanda, callback) {
     const values = [demanda.descricao, demanda.cd_projeto, demanda.data, demanda.horas];
 
     cliente.query(sql, values, 
-        // function (err, res){
-        //     callback(err, res.rows[0]);
-        //     cliente.end();
-        // }
         function (err, res) {
             if(err) {
                 callback(err.message, undefined);
             }
             else {
-                //let demandas = res.rows;
-                //callback(undefined, demandas);
                 callback(err, res.rows[0]);
             }
             cliente.end();
         }
     )
-
 }
 
 //LISTAR DEMANDA
