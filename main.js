@@ -33,22 +33,22 @@ const cadastroDemanda = require('./negocio/demanda_negocio.js');
 // );
 
 //ATUALIZAR PROJETO
-cadastroProjeto.atualizar({id: 4,
-                        nome_projeto: 'Lançamento de outras bases',
-                        cd_projeto: 456456,
-                        id_area: 6,
-                        id_status: 1},
-    function(err, projetoAtualizado) {
-        console.log("Atualizando projeto...")
-        if(err) {
-            console.log("Sistema esta com problemas para atualizar projeto");
-            console.log(err);
-        }
-        else {
-            console.log("Projeto atualizado: ");
-            console.log(projetoAtualizado);
-        }
-    });
+// cadastroProjeto.atualizar({id: 4,
+//                         nome_projeto: 'Lançamento de outras bases',
+//                         cd_projeto: 456456,
+//                         id_area: 6,
+//                         id_status: 1},
+//     function(err, projetoAtualizado) {
+//         console.log("Atualizando projeto...")
+//         if(err) {
+//             console.log("Sistema esta com problemas para atualizar projeto");
+//             console.log(err);
+//         }
+//         else {
+//             console.log("Projeto atualizado: ");
+//             console.log(projetoAtualizado);
+//         }
+//     });
 
 //console.log("Buscar Projeto Por Id: ");
 // cadastroProjeto.buscarPorId();
@@ -90,8 +90,23 @@ cadastroProjeto.atualizar({id: 4,
 //     }
 // );
 
-//console.log("Atualizar Demanda: ");
-// cadastroDemanda.atualizar();
+//ATUALIZAR DEMANDA
+cadastroDemanda.atualizar({id: 3,
+                        descricao: 'Novo teste do banco',
+                        cd_projeto: 123456,
+                        data: '05/06/2022',
+                        horas: '04:15:00'},
+    function(err, demandaInserida) {
+        console.log("Atualizando demanda...")
+        if(err) {
+            console.log("Sistema esta com problemas para atualizar demanda");
+            console.log(err);
+        }
+        else {
+            console.log("Demanda inserida: ");
+            console.log(demandaInserida);
+        }
+    });
 
 //console.log("Buscar Demanda Por Id: ");
 // cadastroDemanda.buscarPorId();

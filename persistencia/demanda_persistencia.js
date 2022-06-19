@@ -49,7 +49,28 @@ function listar(callback) {
     )    
 }
 
+//ATUALIZAR DEMANDA
+function atualizar(demanda, callback) {
+    const cliente = new Client(conexao);
+    cliente.connect();
+
+    const sql = "UPDATE demandas SET descricao = $2, cd_projeto = $3, data = $4, horas = $5 WHERE id = $1";
+    const values = [demanda.id, demanda.descricao, demanda.cd_projeto, demanda.data, demanda.horas];
+
+    cliente.query(sql, values, 
+        function (err, res) {
+            if(err) {
+                callback(err.message, undefined);
+            }
+            else {
+                callback(undefined, demanda);
+            }
+            cliente.end();
+        }
+    )
+}
+
 //EXPORT
 module.exports = {
-    inserir, listar
+    inserir, listar, atualizar
 }

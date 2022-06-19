@@ -13,6 +13,15 @@ function listar (callback) {
     demandaRepositorio.listar(callback);
 }
 
+function atualizar (demanda, callback) {
+    if (!demanda || !demanda.descricao || !demanda.cd_projeto || !demanda.data || !demanda.horas){
+        const erro = "A demanda possui campo(s) não preenchido(s).";
+    }
+    else{
+        demandaRepositorio.atualizar(demanda, callback);
+    }
+}
+
 module.exports = {
-    inserir, listar
+    inserir, listar, atualizar
 }
