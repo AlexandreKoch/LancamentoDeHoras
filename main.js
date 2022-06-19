@@ -1,14 +1,54 @@
 const cadastroProjeto = require('./negocio/projeto_negocio.js');
 const cadastroDemanda = require('./negocio/demanda_negocio.js');
 
-//console.log("Inserir Projeto: ");
-// cadastroProjeto.inserir();
+//INSERIR PROJETO
+// cadastroProjeto.inserir({nome_projeto: 'Lançamento de outras bases',
+//                         cd_projeto: 456456,
+//                         id_area: 6,
+//                         id_status: 1},
+//     function(err, projetoInserido) {
+//         console.log("Inserindo novo projeto...")
+//         if(err) {
+//             console.log("Sistema esta com problemas para inserir projeto");
+//             console.log(err);
+//         }
+//         else {
+//             console.log("Projeto inserido: ");
+//             console.log(projetoInserido);
+//         }
+//     });
 
-//console.log("Listar Projeto: ");
-// cadastroProjeto.listar();
+//LISTAR PROJETOS
+// cadastroProjeto.listar(
+//     function(err, projetos) {
+//         console.log("Listar projetos: ");
+//         if(err) {
+//             console.log("Sistema esta com problemas para listar projetos");
+//             console.log(err);
+//         }
+//         else {
+//             console.log(projetos);
+//         }
+//     }
+// );
 
-//console.log("Atualizar Projeto: ");
-// cadastroProjeto.atualizar();
+//ATUALIZAR PROJETO
+cadastroProjeto.atualizar({id: 4,
+                        nome_projeto: 'Lançamento de outras bases',
+                        cd_projeto: 456456,
+                        id_area: 6,
+                        id_status: 3},
+    function(err, projetoAtualizado) {
+        console.log("Atualizando projeto...")
+        if(err) {
+            console.log("Sistema esta com problemas para atualizar projeto");
+            console.log(err);
+        }
+        else {
+            console.log("Projeto atualizado: ");
+            console.log(projetoAtualizado);
+        }
+    });
 
 //console.log("Buscar Projeto Por Id: ");
 // cadastroProjeto.buscarPorId();
@@ -20,23 +60,23 @@ const cadastroDemanda = require('./negocio/demanda_negocio.js');
 //=================================================
 
 //INSERIR DEMANDA
-cadastroDemanda.inserir({descricao: 'Novo teste do banco',
-                        cd_projeto: 123456,
-                        data: '05/06/2022',
-                         horas: '00:15:00'},
-    function(err, demandaInserida) {
-        console.log("Inserindo novo teste...")
-        if(err) {
-            console.log("Sistema esta com problemas para inserir demanda");
-            console.log(err);
-        }
-        else {
-            console.log("Demanda inserida: ");
-            console.log(demandaInserida);
-        }
-    });
+// cadastroDemanda.inserir({descricao: 'Novo teste do banco',
+//                         cd_projeto: 123456,
+//                         data: '05/06/2022',
+//                          horas: '00:15:00'},
+//     function(err, demandaInserida) {
+//         console.log("Inserindo novo teste...")
+//         if(err) {
+//             console.log("Sistema esta com problemas para inserir demanda");
+//             console.log(err);
+//         }
+//         else {
+//             console.log("Demanda inserida: ");
+//             console.log(demandaInserida);
+//         }
+//     });
 
-//LISTAR DEMANDA
+//LISTAR DEMANDAS
 // cadastroDemanda.listar(
 //     function(err, demandas) {
 //         console.log("Listar demandas: ");

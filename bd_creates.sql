@@ -1,3 +1,4 @@
+--Create AREAS
 CREATE TABLE IF NOT EXISTS public.areas
 (
     id integer NOT NULL DEFAULT nextval('areas_id_seq'::regclass),
@@ -20,6 +21,7 @@ values ('DTI - Tecnologia da Informação'),
 ('FAB - Fábrica / Produção'),
 ('JUR - Jurídico')
 
+--Create STATUS
 CREATE TABLE IF NOT EXISTS public.status
 (
     id integer NOT NULL DEFAULT nextval('status_id_seq'::regclass),
@@ -30,6 +32,7 @@ CREATE TABLE IF NOT EXISTS public.status
 insert into status (status)
 values ('Pendente'), ('Em andamento'), ('Aguardando'), ('Finalizado'), ('Cancelado')
 
+--Create PROJETOS
 CREATE TABLE IF NOT EXISTS public.projetos
 (
     id integer NOT NULL DEFAULT nextval('projetos_id_seq'::regclass),
@@ -52,6 +55,7 @@ CREATE TABLE IF NOT EXISTS public.projetos
         NOT VALID
 )
 
+--Create DEMANDAS
 CREATE TABLE IF NOT EXISTS public.demandas
 (
     id integer NOT NULL DEFAULT nextval('demandas_id_seq'::regclass),
