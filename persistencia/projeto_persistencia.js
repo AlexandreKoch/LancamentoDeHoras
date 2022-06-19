@@ -63,7 +63,7 @@ function atualizar(projeto, callback) {
                 callback(err.message, undefined);
             }
             else {
-                callback(err, res.rows[0]);
+                callback(undefined, projeto);
             }
             cliente.end();
         }

@@ -37,7 +37,7 @@ cadastroProjeto.atualizar({id: 4,
                         nome_projeto: 'Lançamento de outras bases',
                         cd_projeto: 456456,
                         id_area: 6,
-                        id_status: 3},
+                        id_status: 1},
     function(err, projetoAtualizado) {
         console.log("Atualizando projeto...")
         if(err) {
