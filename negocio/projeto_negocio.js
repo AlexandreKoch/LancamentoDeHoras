@@ -22,6 +22,15 @@ function atualizar (projeto, callback) {
     }
 }
 
+function buscar (projeto, callback) {
+    if (!projeto.id) {
+        const erro = "O ID precisa ser informado para realização da consulta";
+    }
+    else{
+        projetoRepositorio.buscar(projeto, callback);
+    }
+}
+
 module.exports = {
-    inserir, listar, atualizar
+    inserir, listar, atualizar, buscar
 }

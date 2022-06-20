@@ -35,6 +35,7 @@ function listar(callback) {
     cliente.connect();
     
     const sql = "SELECT * FROM projetos";
+    //const sql = "select P.id, P.cd_projeto, P.nome_projeto, A.nome_area, (select sum (horas) from demandas where cd_projeto = P.cd_projeto) as Total, S.status from projetos P left join status S on P.id_status = S.id left join areas A on P.id_area = A.id";
     cliente.query(sql, 
         function (err, res) {
             if(err) {
@@ -70,7 +71,29 @@ function atualizar(projeto, callback) {
     )
 }
 
+//BUSCAR PROJETO
+function buscar(projeto, callback) {
+    const cliente = new Client(conexao);
+    cliente.connect();
+    
+    const sql = "select P.id, P.cd_projeto, P.nome_projeto, A.nome_area, (select sum (horas) from demandas where cd_projeto = P.cd_projeto) as Total, S.status from projetos P left join status S on P.id_status = S.id left join areas A on P.id_area = A.id where P.id = $1";
+    const values = [projeto.id];
+
+    cliente.query(sql, values,
+        function (err, res) {
+            if(err) {
+                callback(err.message, undefined);
+            }
+            else {
+                let projetos = res.rows;
+                callback(undefined, projetos);
+            }
+            cliente.end();
+        }
+    )    
+}
+
 //EXPORT
 module.exports = {
-    inserir, listar, atualizar
+    inserir, listar, atualizar, buscar
 }

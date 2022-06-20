@@ -50,14 +50,26 @@ const cadastroDemanda = require('./negocio/demanda_negocio.js');
 //         }
 //     });
 
-//console.log("Buscar Projeto Por Id: ");
-// cadastroProjeto.buscarPorId();
+//BUSCAR PROJETOS
+cadastroProjeto.buscar({id: 3},
+    function(err, projetos) {
+        console.log("Buscar projetos: ");
+        if(err) {
+            console.log("Sistema esta com problemas para buscar projetos");
+            console.log(err);
+        }
+        else {
+            console.log(projetos);
+        }
+    }
+);
 
 //console.log("Deletar Projeto: ");
 // cadastroProjeto.deletar();
 
-//=================================================
-//=================================================
+//==================================================================================================
+//==================================================================================================
+//==================================================================================================
 
 //INSERIR DEMANDA
 // cadastroDemanda.inserir({descricao: 'Novo teste do banco',
@@ -91,22 +103,22 @@ const cadastroDemanda = require('./negocio/demanda_negocio.js');
 // );
 
 //ATUALIZAR DEMANDA
-cadastroDemanda.atualizar({id: 3,
-                        descricao: 'Novo teste do banco',
-                        cd_projeto: 123456,
-                        data: '05/06/2022',
-                        horas: '04:15:00'},
-    function(err, demandaInserida) {
-        console.log("Atualizando demanda...")
-        if(err) {
-            console.log("Sistema esta com problemas para atualizar demanda");
-            console.log(err);
-        }
-        else {
-            console.log("Demanda inserida: ");
-            console.log(demandaInserida);
-        }
-    });
+// cadastroDemanda.atualizar({id: 3,
+//                         descricao: 'Novo teste do banco',
+//                         cd_projeto: 123456,
+//                         data: '05/06/2022',
+//                         horas: '04:15:00'},
+//     function(err, demandaInserida) {
+//         console.log("Atualizando demanda...")
+//         if(err) {
+//             console.log("Sistema esta com problemas para atualizar demanda");
+//             console.log(err);
+//         }
+//         else {
+//             console.log("Demanda inserida: ");
+//             console.log(demandaInserida);
+//         }
+//     });
 
 //console.log("Buscar Demanda Por Id: ");
 // cadastroDemanda.buscarPorId();
