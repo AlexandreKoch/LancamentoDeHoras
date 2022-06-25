@@ -70,6 +70,28 @@ function atualizar(demanda, callback) {
     )
 }
 
+//BUSCAR DEMANDA
+function buscar(demanda, callback) {
+    const cliente = new Client(conexao);
+    cliente.connect();
+    
+    const sql = "";
+    const values = [demanda.id];
+
+    cliente.query(sql, values,
+        function (err, res) {
+            if(err) {
+                callback(err.message, undefined);
+            }
+            else {
+                let demanda = res.rows;
+                callback(undefined, demanda);
+            }
+            cliente.end();
+        }
+    )    
+}
+
 //EXPORT
 module.exports = {
     inserir, listar, atualizar

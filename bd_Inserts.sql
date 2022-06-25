@@ -30,3 +30,7 @@ values ('DTI - Tecnologia da Informação'),
 --Insere STATUS
 insert into status (status)
 values ('Pendente'), ('Em andamento'), ('Aguardando'), ('Finalizado'), ('Cancelado')
+
+--Insere USUARIOS
+INSERT INTO usuarios (nome)
+VALUES ('Funano da Silva')

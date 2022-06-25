@@ -21,3 +21,16 @@ where P.cd_projeto = 123456
 select sum(horas) 
 from demandas
 where cd_projeto = 123456
+
+--Select DEMANDAS
+select D.id
+	, U.nome as responsavel
+	, D.descricao
+	, D.cd_projeto
+	, P.nome_projeto
+	, D.data
+	, D.horas
+from demandas D
+	left join projetos P on D.cd_projeto = P.cd_projeto
+	left join usuarios U on D.responsavel = U.id
+where D.id = 4

@@ -51,18 +51,18 @@ const cadastroDemanda = require('./negocio/demanda_negocio.js');
 //     });
 
 //BUSCAR PROJETOS
-cadastroProjeto.buscar({id: 3},
-    function(err, projetos) {
-        console.log("Buscar projetos: ");
-        if(err) {
-            console.log("Sistema esta com problemas para buscar projetos");
-            console.log(err);
-        }
-        else {
-            console.log(projetos);
-        }
-    }
-);
+// cadastroProjeto.buscar({id: 2},
+//     function(err, projeto) {
+//         console.log("Buscar projetos: ");
+//         if(err) {
+//             console.log("Sistema esta com problemas para buscar projetos");
+//             console.log(err);
+//         }
+//         else {
+//             console.log(projeto);
+//         }
+//     }
+// );
 
 //console.log("Deletar Projeto: ");
 // cadastroProjeto.deletar();
@@ -74,6 +74,7 @@ cadastroProjeto.buscar({id: 3},
 //INSERIR DEMANDA
 // cadastroDemanda.inserir({descricao: 'Novo teste do banco',
 //                         cd_projeto: 123456,
+//                         responsavel: 1,
 //                         data: '05/06/2022',
 //                          horas: '00:15:00'},
 //     function(err, demandaInserida) {
@@ -106,6 +107,7 @@ cadastroProjeto.buscar({id: 3},
 // cadastroDemanda.atualizar({id: 3,
 //                         descricao: 'Novo teste do banco',
 //                         cd_projeto: 123456,
+//                         responsavel: 1,
 //                         data: '05/06/2022',
 //                         horas: '04:15:00'},
 //     function(err, demandaInserida) {
@@ -120,8 +122,19 @@ cadastroProjeto.buscar({id: 3},
 //         }
 //     });
 
-//console.log("Buscar Demanda Por Id: ");
-// cadastroDemanda.buscarPorId();
+//BUSCAR DEMANDAS
+cadastroDemanda.buscar({id: 2},
+    function(err, demanda) {
+        console.log("Buscar demanda: ");
+        if(err) {
+            console.log("Sistema esta com problemas para buscar demanda");
+            console.log(err);
+        }
+        else {
+            console.log(demanda);
+        }
+    }
+);
 
 //console.log("Deletar Demanda: ");
 // cadastroDemanda.deletar();

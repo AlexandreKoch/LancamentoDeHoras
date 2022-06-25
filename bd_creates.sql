@@ -55,6 +55,14 @@ CREATE TABLE IF NOT EXISTS public.projetos
         NOT VALID
 )
 
+--create USUARIOS
+CREATE TABLE IF NOT EXISTS public.usuarios
+(
+    id integer NOT NULL DEFAULT nextval('usuarios_id_seq'::regclass),
+    nome character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT usuarios_pkey PRIMARY KEY (id)
+)
+
 --Create DEMANDAS
 CREATE TABLE IF NOT EXISTS public.demandas
 (
@@ -63,9 +71,15 @@ CREATE TABLE IF NOT EXISTS public.demandas
     cd_projeto integer NOT NULL,
     data date NOT NULL,
     horas time without time zone NOT NULL,
+    responsavel integer NOT NULL,
     CONSTRAINT demandas_pkey PRIMARY KEY (id),
     CONSTRAINT "codigo projeto" FOREIGN KEY (cd_projeto)
         REFERENCES public.projetos (cd_projeto) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID,
+    CONSTRAINT "id usuario" FOREIGN KEY (responsavel)
+        REFERENCES public.usuarios (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
         NOT VALID
