@@ -1,36 +1,68 @@
 const projetoRepositorio = require ('../persistencia/projeto_persistencia.js');
 
 function inserir (projeto, callback) {
-    if (!projeto) {
-        const erro = "O projeto possui campos obrigatórios não preenchidos";
+    if(!projeto || !projeto.nome_projeto || !projeto.cd_projeto){
+        const erro = { 
+            mensagem: "O projeto possui campos obrigatórios não preenchidos",
+            numero: 400
+        };
+        callback(erro, undefined)
     }
-    else{
+    else {
         projetoRepositorio.inserir(projeto, callback);
-    }
+    }  
 }
 
 function listar (callback) {
     projetoRepositorio.listar(callback);
 }
 
-function atualizar (projeto, callback) {
-    if (!projeto) {
-        const erro = "O projeto possui campos obrigatórios não preenchidos";
+function atualizar(id, projeto, callback) {
+    if(!id || isNaN(id)){
+        const erro = { 
+            mensagem: "Identificador Invalido!",
+            numero: 400
+        }
+        callback(erro, undefined);
     }
-    else{
-        projetoRepositorio.atualizar(projeto, callback);
+    else if(!projeto || !projeto.nome_projeto || !projeto.cd_projeto) {
+        const erro = { 
+            mensagem: "Todos os campos devem ser preenchidos!",
+            numero: 400
+        };
+        callback(erro, undefined)
+    }
+    else { 
+        projetoRepositorio.atualizar(id, projeto, callback);
     }
 }
 
-function buscar (projeto, callback) {
-    if (!projeto.id) {
-        const erro = "O ID precisa ser informado para realização da consulta";
+function buscarPorId(id, callback){
+    if(!id || isNaN(id)){
+        const erro = { 
+            mensagem: "Identificador Invalido!",
+            numero: 400
+        }
+        callback(erro, undefined);
     }
-    else{
-        projetoRepositorio.buscar(projeto, callback);
+    else { 
+        projetoRepositorio.buscarPorId(id, callback);
+    }
+}
+
+function deletar(id, callback) {
+    if(!id || isNaN(id)){
+        const erro = { 
+            mensagem: "Identificador Invalido!",
+            numero: 400
+        }
+        callback(erro, undefined);
+    }
+    else {
+        projetoRepositorio.deletar(id,callback);
     }
 }
 
 module.exports = {
-    inserir, listar, atualizar, buscar
+    inserir, listar, atualizar, buscarPorId, deletar
 }
